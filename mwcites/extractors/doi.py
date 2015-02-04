@@ -8,7 +8,7 @@ TAGS_RE = re.compile(r'</?\s*(ref|span|div|table|h[1-6]|b|ins|del)\b[^>\n\r]*>',
 
 def extract(text):
     for match in DOI_RE.finditer(text):
-        id = re.sub(TAGS_RE, "", match.group(1))
+        id = re.sub(TAGS_RE, "", match.group(1)).rstrip(".")
         yield ("doi", id)
 
 
