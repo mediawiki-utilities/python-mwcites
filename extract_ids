@@ -1,2 +1,0 @@
-#!/bin/sh
-/usr/bin/env python -tt -c "from pmids import extract_pmids; extract_pmids.main();" "$@"

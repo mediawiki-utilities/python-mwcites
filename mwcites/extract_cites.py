@@ -34,8 +34,10 @@ def main():
             ids = set()
             for revision in page:
                 
-                ids = set(doi.extract(revision.text)) + \
-                      set(pubmed.extract(revision.text))
+                ids = set(chain(
+                        doi.extract(revision.text),
+                        pubmed.extract(revision.text)
+                ))
                 
                 for id in ids:
                     if id not in id_appearance:

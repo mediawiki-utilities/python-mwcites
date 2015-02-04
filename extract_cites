@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/bin/env python -tt -c "from pmids import extract_pmids; extract_pmids.main();" "$@"
+/usr/bin/env python -tt -c "from mwcites import extract_cites; extract_cites.main();" "$@"
