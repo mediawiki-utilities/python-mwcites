@@ -1,29 +1,25 @@
 """
-Extracts PubMed IDs from articles
+Extracts academic citations from articles from the history of Wikipedia articles
+by processing a pages-meta-history XML dump and matching regular expressions
+to revision content.
+
+Currently supported identifies include:
+ * PubMed
+ * DOI
 
 Usage:
-    extract_pmids -h | --help
-    extract_pmids <dump_path>...
+    extract_cites -h | --help
+    extract_cites <dump_path>...
 
 Options:
     -h --help        Shows this documentation
 """
-
-import re
+from itertools import chain
 
 import docopt
 from mw import xml_dump
 
-PMID_RE = re.compile(r"\b(pmid|pmc) *= *(pmc)?([0-9]+)\b", re.I)
-
-# See: https://en.wikipedia.org/w/index.php?
-#      title=Wikipedia%3AVillage_pump_%28technical%29&
-#      diff=630990203&oldid=630985731
-PMURL_RE = re.compile(r"//www\.ncbi\.nlm\.nih\.gov" +
-                      r"/pubmed/([0-9]+)", re.I)
-PMCURL_RE = re.compile(r"//www\.ncbi\.nlm\.nih\.gov" +
-                       r"/pmc/articles/PMC([0-9]+)", re.I)
-
+from .extractors import doi, pubmed
 
 
 def main():
@@ -37,16 +33,9 @@ def main():
             id_appearance = {}
             ids = set()
             for revision in page:
-                ids = set()
                 
-                for match in PMID_RE.finditer(revision.text or ""):
-                    ids.add((match.group(1).lower(), int(match.group(3))))
-                
-                for match in PMURL_RE.finditer(revision.text or ""):
-                    ids.add(("pmid", int(match.group(1))))
-                
-                for match in PMCURL_RE.finditer(revision.text or ""):
-                    ids.add(("pmc", int(match.group(1))))
+                ids = set(doi.extract(revision.text)) + \
+                      set(pubmed.extract(revision.text))
                 
                 for id in ids:
                     if id not in id_appearance:
@@ -67,6 +56,6 @@ def main():
         print("{0}\t{1}\t{2}\t{3}\t{4}\t{5}"\
               .format(page_id,
                       title.replace("\t", "\\t").replace("\n", "\\n"),
-                      rev_id, 
+                      rev_id,
                       timestamp.long_format(),
                       type, id))
