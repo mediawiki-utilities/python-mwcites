@@ -6,11 +6,15 @@ Extracting citations
 --------------------
 There's really only one utility in this package called ``extract_cites``.
 
+::
+
     $ extract_cites enwiki-20150112-pages-meta-history*.xml*.bz2 > citations.tsv
 
 Documentation
 -------------
-Usage documentation can be found by running ``extract_cites -h``.
+Usage documentation can be found by running ``$ extract_cites -h``.
+
+::
 
     Extracts academic citations from articles from the history of Wikipedia
     articles by processing a pages-meta-history XML dump and matching regular
