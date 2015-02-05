@@ -54,7 +54,7 @@ def run(paths, extractors=[doi, pubmed]):
     
     print("\t".join(HEADERS))
     
-    cites = xml_dump.map(args['<dump_path>'], process_dump)
+    cites = xml_dump.map(paths, process_dump)
     
     for page_id, title, rev_id, timestamp, type, id in cites:
         
