@@ -87,7 +87,7 @@ def process_page(page, extractors):
         
     for id in ids: #For the ids in the last version of the page
         rev_id, timestamp = appearances[id]
-        yield (page.id, page.title, rev_id, timestamp, id[0], id[1])
+        yield (page.id, page.title, rev_id, timestamp, id.type, id.id)
 
 def extract_ids(text, extractors):
     for extractor in extractors:

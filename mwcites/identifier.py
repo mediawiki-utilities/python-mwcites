@@ -1,3 +1,3 @@
 from collections import namedtuple
 
-Identifier = namedtuple("Identifier", ['id', 'type'])
+Identifier = namedtuple("Identifier", ['type', 'id'])
