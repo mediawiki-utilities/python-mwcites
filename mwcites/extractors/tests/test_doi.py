@@ -16,13 +16,18 @@ American Behavioral Scientist,
 0002764212469365 doi: 10.1177/0002764212469365</ref>.  Hats pants and banana
 [http://dx.doi.org/10.1170/foo<bar>(herp)derp]
 [http://dx.doi.org/10.1170/foo<bar>(herp)derp[waffles]]
+{{cite|...|doi=10.1098/rspb.2008.1131|issue=1656}}
+http://www.google.com/sky/#latitude=3.362&longitude=160.1238441&zoom=
+10.2387/234310.2347/39423
 """
 EXPECTED = [
     Identifier('doi', "10.0000/m1"),
     Identifier('doi', "10.0000/m2"),
     Identifier('doi', "10.1177/0002764212469365"),
     Identifier('doi', "10.1170/foo<bar>(herp)derp"),
-    Identifier('doi', "10.1170/foo<bar>(herp)derp[waffles]")
+    Identifier('doi', "10.1170/foo<bar>(herp)derp[waffles]"),
+    Identifier('doi', "10.1098/rspb.2008.1131"),
+    Identifier('doi', "10.2387/234310.2347/39423")
 ]
 
 """

@@ -13,7 +13,7 @@ def extract_regex(text):
         id = re.sub(TAGS_RE, "", match.group(1)).rstrip(".")
         yield Identifier("doi", id)
 
-DOI_START_RE = re.compile(r'[0-9]{2}\.[0-9]{4,}')
+DOI_START_RE = re.compile(r'10\.[0-9]{4,}/')
 
 HTML_TAGS = ['ref', 'span', 'div', 'table', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
              'b', 'u', 'i', 's', 'ins', 'del', 'code', 'tt', 'blockquote',
@@ -138,9 +138,9 @@ def extract_search(text, lexicon=LEXICON):
             tokens = tokenize_search(text, match.span()[0], lexicon=lexicon)
             tokens = peekable(tokens)
             doi = read_doi(tokens)
-            last_end += len(doi)
+            last_end = match.span()[0] + len(doi)
             yield Identifier('doi', doi)
         else:
-            last_end = match.span()[1]
+            last_end = max(match.span()[1], last_end)
 
 extract = extract_search # Setting the default to the best method
