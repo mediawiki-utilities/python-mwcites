@@ -1,18 +1,21 @@
 Extract academic citaitons from Wikipedia
 =========================================
-This project contains a utility for extracting academic citation identifiers
+This project contains a utility for extracting academic citation identifiers.
 
-Extracting citations
---------------------
+``pip install mwcites``
+
+Usage
+-----
 There's really only one utility in this package called ``extract_cites``.
 
 ::
 
     $ extract_cites enwiki-20150112-pages-meta-history*.xml*.bz2 > citations.tsv
 
+
 Documentation
 -------------
-Usage documentation can be found by running ``$ extract_cites -h``.
+Documentation is provided ``$ mwcites extract -h``.
 
 ::
 
@@ -38,8 +41,8 @@ Usage documentation can be found by running ``$ extract_cites -h``.
            e.g 10.1183/09031936.00213411
 
     Usage:
-        extract_cites -h | --help
-        extract_cites <dump_file>...
+        mwcites extract -h | --help
+        mwcites extract <dump_file>...
 
     Options:
         -h --help        Shows this documentation

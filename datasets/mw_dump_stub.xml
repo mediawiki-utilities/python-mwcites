@@ -1,0 +1,147 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.9/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.9/ http://www.mediawiki.org/xml/export-0.9.xsd" version="0.9" xml:lang="en">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>enwiki</dbname>
+    <base>http://en.wikipedia.org/wiki/Main_Page</base>
+    <generator>MediaWiki 1.25wmf6</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="108" case="first-letter">Book</namespace>
+      <namespace key="109" case="first-letter">Book talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="446" case="first-letter">Education Program</namespace>
+      <namespace key="447" case="first-letter">Education Program talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Nagamaki naomi</title>
+    <ns>0</ns>
+    <id>1325004</id>
+    <redirect title="Nagamaki" />
+    <revision>
+      <id>8801038</id>
+      <timestamp>2004-12-25T05:34:36Z</timestamp>
+      <contributor>
+        <ip>4.46.105.106</ip>
+      </contributor>
+      <text xml:space="preserve">This is a doi randomly placed in the text 10.0000/m1
+      Here's a typo that might be construed as a doi 10.60 people were there.
+      &lt;ref&gt;Halfaker, A., Geiger, R. S., Morgan, J. T., &amp; Riedl, J. (2012).
+      The rise and decline of an open collaboration system: How Wikipedia's
+      reaction to popularity is causing its decline.
+      American Behavioral Scientist,
+      0002764212469365 doi: 10.1177/0002764212469365&lt;/ref&gt;.  Hats pants and banana
+      [http://dx.doi.org/10.1170/foo&lt;bar&gt;(herp)derp]
+      {{cite|...|doi=10.1098/rspb.2008.1131|issue=1656}}
+      http://www.google.com/sky/#latitude=3.362&amp;longitude=160.1238441&amp;zoom=
+      10.2387/234310.2347/39423</text>
+      <sha1>cqt09qrejym5mdf3h0irtelqd8f46h3</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>10730831</id>
+      <parentid>8801038</parentid>
+      <timestamp>2004-12-25T05:38:45Z</timestamp>
+      <contributor>
+        <username>Gadfium</username>
+        <id>54381</id>
+      </contributor>
+      <minor />
+      <comment>Wikify</comment>
+      <text xml:space="preserve">This is a doi randomly placed in the text 10.0000/m1
+      Here's a typo that might be construed as a doi 10.60 people were there.
+      {{cite|...|doi=10.0000/m2|pmid=10559875}}
+      &lt;ref&gt;Halfaker, A., Geiger, R. S., Morgan, J. T., &amp; Riedl, J. (2012).
+      The rise and decline of an open collaboration system: How Wikipedia's
+      reaction to popularity is causing its decline.
+      American Behavioral Scientist,
+      0002764212469365 doi: 10.1177/0002764212469365&lt;/ref&gt;.  Hats pants and banana
+      [http://dx.doi.org/10.1170/foo&lt;bar&gt;(herp)derp]
+      [http://dx.doi.org/10.1170/foo&lt;bar&gt;(herp)derp[waffles]]
+      {{cite|...|doi=10.1098/rspb.2008.1131|issue=1656}}
+      http://www.google.com/sky/#latitude=3.362&amp;longitude=160.1238441&amp;zoom=
+      10.2387/234310.2347/39423</text>
+      <sha1>pfjkfb1u54tnkl4exkxge4f5v1mn7cl</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>10730832</id>
+      <parentid>10730831</parentid>
+      <timestamp>2004-12-25T05:38:46Z</timestamp>
+      <contributor>
+        <username>Gadfium</username>
+        <id>54381</id>
+      </contributor>
+      <minor />
+      <comment>Wikify</comment>
+      <text xml:space="preserve">This is a doi randomly placed in the text 10.0000/m1
+      Here's a typo that might be construed as a doi 10.60 people were there.
+      {{cite|...|doi=10.0000/m2|pmid=10559875}}
+      &lt;ref&gt;Halfaker, A., Geiger, R. S., Morgan, J. T., &amp; Riedl, J. (2012).
+      The rise and decline of an open collaboration system: How Wikipedia's
+      reaction to popularity is causing its decline.
+      American Behavioral Scientist,
+      0002764212469365 doi: 10.1177/0002764212469365&lt;/ref&gt;.  Hats pants and banana
+      {{cite|...|doi=10.1098/rspb.2008.1131|issue=1656}}
+      http://www.google.com/sky/#latitude=3.362&amp;longitude=160.1238441&amp;zoom=
+      10.2387/234310.2347/39423</text>
+      <sha1>pfjkfb1u54sksl4exkxge4f5v1mn7cl</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>10730833</id>
+      <parentid>10730832</parentid>
+      <timestamp>2004-12-25T05:38:47Z</timestamp>
+      <contributor>
+        <username>Gadfium</username>
+        <id>54381</id>
+      </contributor>
+      <comment>Wikify</comment>
+      <text xml:space="preserve">This is a doi randomly placed in the text 10.0000/m1
+      Here's a typo that might be construed as a doi 10.60 people were there.
+      {{cite|...|doi=10.0000/m2|pmid=10559875}}
+      &lt;ref&gt;Halfaker, A., Geiger, R. S., Morgan, J. T., &amp; Riedl, J. (2012).
+      The rise and decline of an open collaboration system: How Wikipedia's
+      reaction to popularity is causing its decline.
+      American Behavioral Scientist,
+      0002764212469365 doi: 10.1177/0002764212469365&lt;/ref&gt;.  Hats pants and banana
+      [http://dx.doi.org/10.1170/foo&lt;bar&gt;(herp)derp]
+      [http://dx.doi.org/10.1170/foo&lt;bar&gt;(herp)derp[waffles]]
+      {{cite|...|doi=10.1098/rspb.2008.1131|issue=1656}}
+      http://www.google.com/sky/#latitude=3.362&amp;longitude=160.1238441&amp;zoom=
+      10.2387/234310.2347/39423</text>
+      <sha1>pfjkfb1u54tnksksxkxgehhgv1mn7cl</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>
