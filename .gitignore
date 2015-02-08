@@ -3,14 +3,11 @@ __pycache__/
 *.py[cod]
 *~
 
-# Datasets
-*.tsv
-*.table
-*.created
-*.loaded
-
 # C extensions
 *.so
+
+# Datasets
+*.bz2
 
 # Distribution / packaging
 .Python
@@ -58,4 +55,3 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
-
