@@ -23,7 +23,7 @@ setup(
     packages=find_packages(),
     entry_points = {
         'console_scripts': [
-            'extract_cites=mwcites.extract_cites:main'
+            'mwcitations=mwcites.mwcitations:main'
         ],
     },
     long_description = read('README.rst'),

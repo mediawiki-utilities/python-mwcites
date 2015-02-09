@@ -15,6 +15,7 @@ Options:
     <utility>    The name of the utility to run
 """
 import sys
+import traceback
 from importlib import import_module
 
 import docopt
@@ -41,6 +42,7 @@ def main():
     try:
         module = import_module(".utilities." + module_name, package="mwcites")
     except ImportError:
+        sys.stderr.write(traceback.format_exc())
         sys.stderr.write("Could not find utility {0}.\n".format(module_name))
         sys.exit(1)
     
