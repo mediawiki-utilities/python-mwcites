@@ -6,16 +6,16 @@ This project contains a utility for extracting academic citation identifiers.
 
 Usage
 -----
-There's really only one utility in this package called ``extract_cites``.
+There's really only one utility in this package called ``mwcitations``.
 
 ::
 
-    $ extract_cites enwiki-20150112-pages-meta-history*.xml*.bz2 > citations.tsv
+    $ mwcitations extract enwiki-20150112-pages-meta-history*.xml*.bz2 > citations.tsv
 
 
 Documentation
 -------------
-Documentation is provided ``$ mwcites extract -h``.
+Documentation is provided ``$ mwcitations extract -h``.
 
 ::
 
