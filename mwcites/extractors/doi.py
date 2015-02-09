@@ -6,7 +6,7 @@ from more_itertools import peekable
 
 from ..identifier import Identifier
 
-DOI_RE = re.compile(r'\b(10\.\d+/[^\s\|\]\}\?\,]+)', re.I)
+DOI_RE = re.compile(r'\b(10\.\d+/[^\s\|\]\}\?\,]+)')
 
 def extract_regex(text):
     for match in DOI_RE.finditer(text):
@@ -34,6 +34,8 @@ LEXICON = [
     (r'\)',                'close_paren'),
     (r'\[',                'open_bracket'),
     (r'\]',                'close_bracket'),
+    (r'<!--',              'comment_start'),
+    (r'-->',               'comment_end'),
     (TAGS_RE.pattern,      'tag'),
     (r'<',                 'open_angle'),
     (r'>',                 'close_angle'),
@@ -64,7 +66,7 @@ def tokenize_finditer(text, lexicon=LEXICON):
     pattern = '|'.join("(?P<{0}>{1})".format(name, pattern)
                        for pattern, name in lexicon)
     
-    group_regex = re.compile(pattern, re.I|re.U)
+    group_regex = re.compile(pattern, re.I|re.U|re.M)
     
     for match in group_regex.finditer(text):
         yield match.lastgroup, match.group(0)
@@ -90,7 +92,8 @@ def read_doi(tokens):
     while tokens.peek(None) is not None:
         name, match = tokens.peek()
         
-        if name in ('url_end', 'break', 'whitespace', 'tag', 'pipe'):
+        if name in ('url_end', 'break', 'whitespace', 'tag', 'pipe',
+                    'comment_start', 'comment_end'):
             break
         elif name == 'open_bracket':
             depth['bracket'] += 1

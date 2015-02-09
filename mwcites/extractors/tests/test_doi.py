@@ -19,6 +19,8 @@ American Behavioral Scientist,
 {{cite|...|doi=10.1098/rspb.2008.1131|issue=1656}}
 http://www.google.com/sky/#latitude=3.362&longitude=160.1238441&zoom=
 10.2387/234310.2347/39423
+<!--
+    10.2387/234310.2347/39423-->
 """
 EXPECTED = [
     Identifier('doi', "10.0000/m1"),
@@ -27,6 +29,7 @@ EXPECTED = [
     Identifier('doi', "10.1170/foo<bar>(herp)derp"),
     Identifier('doi', "10.1170/foo<bar>(herp)derp[waffles]"),
     Identifier('doi', "10.1098/rspb.2008.1131"),
+    Identifier('doi', "10.2387/234310.2347/39423"),
     Identifier('doi', "10.2387/234310.2347/39423")
 ]
 
@@ -60,4 +63,5 @@ def test_extract_search():
     ids = list(doi.extract_search(INPUT_TEXT))
     pprint.pprint(ids)
     pprint.pprint(EXPECTED)
+    #pprint.pprint(list(doi.tokenize_finditer(INPUT_TEXT)))
     eq_(ids, EXPECTED)
