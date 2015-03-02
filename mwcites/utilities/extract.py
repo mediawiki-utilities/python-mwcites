@@ -37,9 +37,9 @@ from itertools import chain
 import docopt
 from mw import xml_dump
 
-from ..extractors import doi, pubmed
+from ..extractors import doi, pubmed, isbn
 
-ALL_EXTRACTORS = [doi, pubmed]
+ALL_EXTRACTORS = [doi, pubmed, isbn]
 
 HEADERS = ("page_id", "page_title", "rev_id", "timestamp", "type", "id")
 

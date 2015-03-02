@@ -2,8 +2,8 @@ import pprint
 
 from nose.tools import eq_
 
-from .. import doi
-from ...identifier import Identifier
+from mwcites.extractors import doi
+from mwcites.identifier import Identifier
 
 INPUT_TEXT = """
 This is a doi randomly placed in the text 10.0000/m1

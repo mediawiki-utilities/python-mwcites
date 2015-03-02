@@ -1,6 +1,6 @@
 from nose.tools import eq_
 
-from .. import pubmed
+from mwcites.extractors import pubmed
 
 
 def test_extract():
