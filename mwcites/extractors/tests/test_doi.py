@@ -2,8 +2,8 @@ import pprint
 
 from nose.tools import eq_
 
-from mwcites.extractors import doi
-from mwcites.identifier import Identifier
+from .. import doi
+from ...identifier import Identifier
 
 INPUT_TEXT = """
 This is a doi randomly placed in the text 10.0000/m1
@@ -58,7 +58,7 @@ def test_extract_island():
     pprint.pprint(ids)
     pprint.pprint(EXPECTED)
     eq_(ids, EXPECTED)
-    
+
 def test_extract_search():
     ids = list(doi.extract_search(INPUT_TEXT))
     pprint.pprint(ids)

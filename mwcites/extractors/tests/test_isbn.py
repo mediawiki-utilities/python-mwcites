@@ -1,24 +1,8 @@
 import pprint
 from nose.tools import eq_
 
-from mwcites.extractors import isbn
-from mwcites.identifier import Identifier
-
-EXPECTED = [
-    Identifier('isbn', '0124366031'),
-    Identifier('isbn', '3540206310'),
-    Identifier('isbn', '0618343423'),
-    Identifier('isbn', '9780140276664'),
-    Identifier('isbn', '0130540919'),
-    Identifier('isbn', '0195305736'),
-    Identifier('isbn', '9783704651129'),
-    Identifier('isbn', '3886807525'),
-    Identifier('isbn', '3720527735'),
-    Identifier('isbn', '9783894726652'),
-    Identifier('isbn', '3519264242'),
-    Identifier('isbn', '9783642017346'),
-    Identifier('isbn', '0130540919'),
-]
+from .. import isbn
+from ...identifier import Identifier
 
 INPUT_TEXT = """
     | publisher=Academic Press | isbn=0124366031
@@ -35,6 +19,23 @@ INPUT_TEXT = """
     Bei einer [[Sprungtemperatur]] von 1,2&amp;nbsp;K wird reines Aluminium [[Supraleiter|supraleitend]].&lt;ref&gt;{{Literatur | Autor = Ilschner | first = Bernhard | Titel = Werkstoffwissenschaften und Fertigungstechnik Eigenschaften, Vorgänge, Technologien | Verlag = Springer | Ort = Berlin | Jahr = 2010 | ISBN = 978-3-642-01734-6 | Seiten = 277}}&lt;/ref&gt;
     * {{Literatur | Autor=Michael J. Padilla, Ioannis Miaoulis, Martha Cyr | Jahr = 2002 | Titel = Prentice Hall Science Explorer: Chemical Building Blocks | Verlag = Prentice-Hall, Inc. | Ort = Upper Saddle River, New Jersey USA | ISBN = 0-13-054091-9 | |Originalsprache=en}}
     """
+
+
+EXPECTED = [
+    Identifier('isbn', '0124366031'),
+    Identifier('isbn', '3540206310'),
+    Identifier('isbn', '0618343423'),
+    Identifier('isbn', '9780140276664'),
+    Identifier('isbn', '0130540919'),
+    Identifier('isbn', '0195305736'),
+    Identifier('isbn', '9783704651129'),
+    Identifier('isbn', '3886807525'),
+    Identifier('isbn', '3720527735'),
+    Identifier('isbn', '9783894726652'),
+    Identifier('isbn', '3519264242'),
+    Identifier('isbn', '9783642017346'),
+    Identifier('isbn', '0130540919'),
+]
 
 def test_extract():
     ids = list(isbn.extract(INPUT_TEXT))
