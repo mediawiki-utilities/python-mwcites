@@ -1,6 +1,9 @@
-Extract academic citaitons from Wikipedia
+Extract academic citations from Wikipedia
 =========================================
 This project contains a utility for extracting academic citation identifiers.
+
+**NOTE:** As one of its dependencies (`Mediawiki-Utilities <https://github.com/halfak/Mediawiki-Utilities>`_) requires
+Python 3 so does mwcites.
 
 ``pip install mwcites``
 
@@ -23,10 +26,11 @@ Documentation is provided ``$ mwcitations extract -h``.
     articles by processing a pages-meta-history XML dump and matching regular
     expressions to revision content.
 
-    Currently supported identifies include:
+    Currently supported identifiers include:
 
      * PubMed
      * DOI
+     * ISBN
      
     Outputs a TSV file with the following fields:
 

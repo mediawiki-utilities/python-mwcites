@@ -1,1 +1,4 @@
 docopt
+more-itertools
+mwparserfromhell
+mediawiki-utilities

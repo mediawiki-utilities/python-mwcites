@@ -58,7 +58,7 @@ def test_extract_island():
     pprint.pprint(ids)
     pprint.pprint(EXPECTED)
     eq_(ids, EXPECTED)
-    
+
 def test_extract_search():
     ids = list(doi.extract_search(INPUT_TEXT))
     pprint.pprint(ids)

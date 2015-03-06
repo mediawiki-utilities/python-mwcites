@@ -7,7 +7,8 @@ Currently supported identifies include:
 
  * PubMed
  * DOI
- 
+ * ISBN
+
 Outputs a TSV file with the following fields:
 
  * page_id: The identifier of the Wikipedia article (int), e.g. 1325125
@@ -37,30 +38,30 @@ from itertools import chain
 import docopt
 from mw import xml_dump
 
-from ..extractors import doi, pubmed
+from ..extractors import doi, pubmed, isbn
 
-ALL_EXTRACTORS = [doi, pubmed]
+ALL_EXTRACTORS = [doi, pubmed, isbn]
 
 HEADERS = ("page_id", "page_title", "rev_id", "timestamp", "type", "id")
 
 def main(argv=None):
     args = docopt.docopt(__doc__, argv=argv)
     dump_files = args['<dump_file>']
-    
+
     if args['--extractor'] == ['<all>']:
         extractors = ALL_EXTRACTORS
     else:
         extractors = [import_from_path(path) for path in args['--extractor']]
-    
+
     run(dump_files, extractors)
 
 def run(dump_files, extractors):
-    
+
     print("\t".join(HEADERS))
-    
+
     cites = extract(dump_files, extractors=extractors)
     for page_id, title, rev_id, timestamp, type, id in cites:
-        
+
         print("\t".join(tsv_encode(v) for v in (page_id,
                                                 title,
                                                 rev_id,
@@ -71,17 +72,17 @@ def run(dump_files, extractors):
 def extract(dump_files, extractors=ALL_EXTRACTORS):
     """
     Extracts cites from a set of `dump_files`.
-    
+
     :Parameters:
         dump_files : str | `file`
             A set of files MediaWiki XML dump files
             (expects: pages-meta-history)
         extractors : `list`(`extractor`)
             A list of extractors to apply to the text
-    
+
     :Returns:
         `iterable` -- a generator of extracted cites
-    
+
     """
     # Dump processor function
     def process_dump(dump, path):
@@ -90,34 +91,34 @@ def extract(dump_files, extractors=ALL_EXTRACTORS):
             else:
                 for cite in extract_cite_history(page, extractors):
                     yield cite
-        
+
     # Map call
     return xml_dump.map(dump_files, process_dump)
 
 def extract_cite_history(page, extractors):
     """
     Extracts cites from the history of a `page` (`mw.xml_dump.Page`).
-    
+
     :Parameters:
         page : `iterable`(`mw.xml_dump.Revision`)
             The page to extract cites from
         extractors : `list`(`extractor`)
             A list of extractors to apply to the text
-    
+
     :Returns:
         `iterable` -- a generator of extracted cites
-    
+
     """
     appearances = {} # For tracking the first appearance of an ID
     ids = set() # For holding onto the ids in the last revision.
     for revision in page:
         ids = set(extract_ids(revision.text, extractors))
-        
+
         # For each ID, check to see if we have seen it before
         for id in ids:
             if id not in appearances:
                appearances[id] = (revision.id, revision.timestamp)
-        
+
     for id in ids: #For the ids in the last version of the page
         rev_id, timestamp = appearances[id]
         yield (page.id, page.title, rev_id, timestamp, id.type, id.id)
@@ -125,13 +126,13 @@ def extract_cite_history(page, extractors):
 def extract_ids(text, extractors):
     """
     Uses `extractors` to extract citation identifiers from a text.
-    
+
     :Parameters:
         text : str
             The text to process
         extractors : `list`(`extractor`)
             A list of extractors to apply to the text
-    
+
     :Returns:
         `iterable` -- a generator of extracted identifiers
     """
@@ -142,12 +143,12 @@ def extract_ids(text, extractors):
 def import_from_path(path):
     """
     Imports a specific attribute from a module based on a class path.
-    
+
     :Parameters:
         path : str
             A dot delimited string representing the import path of the desired
             object.
-    
+
     :Returns:
         object -- An imported object
     """
@@ -166,13 +167,13 @@ def tsv_encode(val, none_string="NULL"):
     """
     Encodes a value for inclusion in a TSV.  Basically, it converts the value
     to a string and escapes TABs and linebreaks.
-    
+
     :Parameters:
         val : `mixed`
             The value to encode
         none_string : str
             The string to use when `None` is encountered
-    
+
     :Returns:
         str -- a string representing the encoded value
     """
@@ -181,5 +182,5 @@ def tsv_encode(val, none_string="NULL"):
     else:
         if isinstance(val, bytes):
             val = str(val, 'utf-8')
-        
+
         return str(val).replace("\t", "\\t").replace("\n", "\\n")
