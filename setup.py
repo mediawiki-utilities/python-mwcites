@@ -1,7 +1,7 @@
 import os
 
 from setuptools import find_packages, setup
-
+import mwcites
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
@@ -12,7 +12,7 @@ def requirements(fname):
 
 setup(
     name = "mwcites",
-    version = read('VERSION').strip(),
+    version = mwcites.__version__,
     author = "Aaron Halfaker",
     author_email = "ahalfaker@wikimedia.org",
     description = "A collection of scripts and utilities for extracting " +
@@ -27,7 +27,7 @@ setup(
         ],
     },
     long_description = read('README.rst'),
-    install_requires = ['docopt'],
+    install_requires = ['docopt', 'more-itertools', 'mediawiki-utilities'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "Development Status :: 3 - Alpha",
