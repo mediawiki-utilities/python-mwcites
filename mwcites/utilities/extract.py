@@ -8,6 +8,7 @@ Currently supported identifies include:
  * PubMed
  * DOI
  * ISBN
+ * arXiv
 
 Outputs a TSV file with the following fields:
 
@@ -17,7 +18,7 @@ Outputs a TSV file with the following fields:
            e.g. 282470030
  * timestamp: The timestamp of the revision where the citation was first added.
               (ISO 8601 datetime), e.g. 2009-04-08T01:52:20Z
- * type: The type of identifier, e.g. pmid
+ * type: The type of identifier, e.g. pmid, pmcid, doi, arxiv or isbn
  * id: The id of the cited scholarly article (utf-8),
        e.g 10.1183/09031936.00213411
 
@@ -38,9 +39,9 @@ from itertools import chain
 import docopt
 from mw import xml_dump
 
-from ..extractors import doi, pubmed, isbn
+from ..extractors import arxiv, doi, isbn, pubmed
 
-ALL_EXTRACTORS = [doi, pubmed, isbn]
+ALL_EXTRACTORS = [doi, pubmed, isbn, arxiv]
 
 HEADERS = ("page_id", "page_title", "rev_id", "timestamp", "type", "id")
 
@@ -51,7 +52,8 @@ def main(argv=None):
     if args['--extractor'] == ['<all>']:
         extractors = ALL_EXTRACTORS
     else:
-        extractors = [import_from_path(path) for path in args['--extractor']]
+        extractors = [import_from_path(path.lower)
+                      for path in args['--extractor']]
 
     run(dump_files, extractors)
 

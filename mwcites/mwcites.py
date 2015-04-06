@@ -7,9 +7,9 @@ Right now, there's only one utility, but there will be more to come.
 * extract -- Extracts citations from an XML database dump
 
 Usage:
-    mwcitations (-h | --help)
-    mwcitations <utility> [-h | --help]
-    
+    mwcites (-h | --help)
+    mwcites <utility> [-h | --help]
+
 Options:
     -h | --help  Shows this documentation
     <utility>    The name of the utility to run
@@ -22,12 +22,12 @@ import docopt
 
 
 USAGE = """Usage:
-    mwcitations (-h | --help)
-    mwcitations <utility> [-h | --help]\n"""
+    mwcites (-h | --help)
+    mwcites <utility> [-h | --help]\n"""
 
 
 def main():
-    
+
     if len(sys.argv) < 2:
         sys.stderr.write(USAGE)
         sys.exit(1)
@@ -37,7 +37,7 @@ def main():
     elif sys.argv[1][:1] == "-":
         sys.stderr.write(USAGE)
         sys.exit(1)
-    
+
     module_name = sys.argv[1]
     try:
         module = import_module(".utilities." + module_name, package="mwcites")
@@ -45,5 +45,5 @@ def main():
         sys.stderr.write(traceback.format_exc())
         sys.stderr.write("Could not find utility {0}.\n".format(module_name))
         sys.exit(1)
-    
+
     module.main(sys.argv[2:])

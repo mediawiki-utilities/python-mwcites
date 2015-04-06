@@ -1,7 +1,9 @@
 import os
 
 from setuptools import find_packages, setup
+
 import mwcites
+
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
@@ -23,7 +25,8 @@ setup(
     packages=find_packages(),
     entry_points = {
         'console_scripts': [
-            'mwcitations=mwcites.mwcitations:main'
+            'mwcitations=mwcites.mwcites:main',
+            'mwcites=mwcites.mwcites:main'
         ],
     },
     long_description = read('README.rst'),

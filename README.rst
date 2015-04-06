@@ -31,16 +31,17 @@ Documentation is provided ``$ mwcitations extract -h``.
      * PubMed
      * DOI
      * ISBN
-     
+     * arXiv
+
     Outputs a TSV file with the following fields:
 
      * page_id: The identifier of the Wikipedia article (int), e.g. 1325125
      * page_title: The title of the Wikipedia article (utf-8), e.g. Club cell
      * rev_id: The Wikipedia revision where the citation was first added (int),
                e.g. 282470030
-     * timestamp: The timestamp of the revision where the citation was first added.
-                  (ISO 8601 datetime), e.g. 2009-04-08T01:52:20Z
-     * type: The type of identifier, e.g. pmid
+     * timestamp: The timestamp of the revision where the citation was first
+                  added. (ISO 8601 datetime), e.g. 2009-04-08T01:52:20Z
+     * type: The type of identifier, e.g. pmid, pmcid, doi, isbn or arxiv
      * id: The id of the cited scholarly article (utf-8),
            e.g 10.1183/09031936.00213411
 

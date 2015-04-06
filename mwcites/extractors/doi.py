@@ -5,7 +5,6 @@ from more_itertools import peekable
 
 from ..identifier import Identifier
 
-
 DOI_START_RE = re.compile(r'10\.[0-9]{4,}/')
 
 HTML_TAGS = ['ref', 'span', 'div', 'table', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
