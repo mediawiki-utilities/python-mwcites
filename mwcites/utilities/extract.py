@@ -37,7 +37,9 @@ import sys
 from itertools import chain
 
 import docopt
-from mw import xml_dump
+import mwxml
+
+import mysqltsv
 
 from ..extractors import arxiv, doi, isbn, pubmed
 
@@ -58,18 +60,11 @@ def main(argv=None):
     run(dump_files, extractors)
 
 def run(dump_files, extractors):
-
-    print("\t".join(HEADERS))
+    writer = mysqltsv.Writer(sts.stdout, headers=HEADERS)
 
     cites = extract(dump_files, extractors=extractors)
     for page_id, title, rev_id, timestamp, type, id in cites:
-
-        print("\t".join(tsv_encode(v) for v in (page_id,
-                                                title,
-                                                rev_id,
-                                                timestamp.long_format(),
-                                                type,
-                                                id)))
+        writer.write(page_id, title, rev_id, timestamp.long_format(), type, id)
 
 def extract(dump_files, extractors=ALL_EXTRACTORS):
     """
@@ -95,14 +90,14 @@ def extract(dump_files, extractors=ALL_EXTRACTORS):
                     yield cite
 
     # Map call
-    return xml_dump.map(dump_files, process_dump)
+    return mwxml.map(process_dump, dump_files)
 
 def extract_cite_history(page, extractors):
     """
-    Extracts cites from the history of a `page` (`mw.xml_dump.Page`).
+    Extracts cites from the history of a `page` (`mwxml.Page`).
 
     :Parameters:
-        page : `iterable`(`mw.xml_dump.Revision`)
+        page : `iterable`(`mwxml.Revision`)
             The page to extract cites from
         extractors : `list`(`extractor`)
             A list of extractors to apply to the text
@@ -163,26 +158,3 @@ def import_from_path(path):
     attribute = getattr(module, attribute_name)
 
     return attribute
-
-
-def tsv_encode(val, none_string="NULL"):
-    """
-    Encodes a value for inclusion in a TSV.  Basically, it converts the value
-    to a string and escapes TABs and linebreaks.
-
-    :Parameters:
-        val : `mixed`
-            The value to encode
-        none_string : str
-            The string to use when `None` is encountered
-
-    :Returns:
-        str -- a string representing the encoded value
-    """
-    if val == "None":
-        return null_string
-    else:
-        if isinstance(val, bytes):
-            val = str(val, 'utf-8')
-
-        return str(val).replace("\t", "\\t").replace("\n", "\\n")
