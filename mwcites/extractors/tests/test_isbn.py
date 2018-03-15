@@ -6,6 +6,7 @@ from ...identifier import Identifier
 
 INPUT_TEXT = """
     | isbn=2 906700-09-6
+    | isbn=2 10 004179 7
     | publisher=Academic Press | isbn=0124366031
     | isbn=3540206310
     | accessdate=2008-02-05 | isbn=0-618-34342-3
@@ -24,6 +25,7 @@ INPUT_TEXT = """
 
 EXPECTED = [
     Identifier('isbn', '2906700096'),
+    Identifier('isbn', '2100041797'),
     Identifier('isbn', '0124366031'),
     Identifier('isbn', '3540206310'),
     Identifier('isbn', '0618343423'),
