@@ -32,6 +32,7 @@ Documentation is provided ``$ mwcitations extract -h``.
      * DOI
      * ISBN
      * arXiv
+     * ISSN
 
     Outputs a TSV file with the following fields:
 

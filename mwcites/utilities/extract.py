@@ -9,6 +9,7 @@ Currently supported identifies include:
  * DOI
  * ISBN
  * arXiv
+ * ISSN
 
 Outputs a TSV file with the following fields:
 
@@ -41,9 +42,9 @@ import mwxml
 
 import mysqltsv
 
-from ..extractors import arxiv, doi, isbn, pubmed
+from ..extractors import arxiv, doi, isbn, pubmed, issn
 
-ALL_EXTRACTORS = [doi, pubmed, isbn, arxiv]
+ALL_EXTRACTORS = [doi, pubmed, isbn, arxiv, issn]
 
 HEADERS = ("page_id", "page_title", "rev_id", "timestamp", "type", "id")
 
@@ -60,11 +61,11 @@ def main(argv=None):
     run(dump_files, extractors)
 
 def run(dump_files, extractors):
-    writer = mysqltsv.Writer(sts.stdout, headers=HEADERS)
+    writer = mysqltsv.Writer(sys.stdout, headers=HEADERS)
 
     cites = extract(dump_files, extractors=extractors)
     for page_id, title, rev_id, timestamp, type, id in cites:
-        writer.write(page_id, title, rev_id, timestamp.long_format(), type, id)
+        writer.write([page_id, title, rev_id, timestamp.long_format(), type, id])
 
 def extract(dump_files, extractors=ALL_EXTRACTORS):
     """
