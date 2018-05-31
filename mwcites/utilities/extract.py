@@ -60,11 +60,11 @@ def main(argv=None):
     run(dump_files, extractors)
 
 def run(dump_files, extractors):
-    writer = mysqltsv.Writer(sts.stdout, headers=HEADERS)
+    writer = mysqltsv.Writer(sys.stdout, headers=HEADERS)
 
     cites = extract(dump_files, extractors=extractors)
     for page_id, title, rev_id, timestamp, type, id in cites:
-        writer.write(page_id, title, rev_id, timestamp.long_format(), type, id)
+        writer.write([page_id, title, rev_id, timestamp.long_format(), type, id])
 
 def extract(dump_files, extractors=ALL_EXTRACTORS):
     """

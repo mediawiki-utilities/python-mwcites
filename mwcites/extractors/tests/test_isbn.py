@@ -20,6 +20,9 @@ INPUT_TEXT = """
     &lt;ref name=&quot;flos1&quot;&gt;{{Literatur | Autor = René Flosdorff, Günther Hilgarth | Titel = Elektrische Energieverteilung | Verlag = Teubner | Auflage = 8. | Jahr = 2003 | Kapitel = Kapitel 1.2.2.4 | ISBN = 3-519-26424-2 }}&lt;/ref&gt;
     Bei einer [[Sprungtemperatur]] von 1,2&amp;nbsp;K wird reines Aluminium [[Supraleiter|supraleitend]].&lt;ref&gt;{{Literatur | Autor = Ilschner | first = Bernhard | Titel = Werkstoffwissenschaften und Fertigungstechnik Eigenschaften, Vorgänge, Technologien | Verlag = Springer | Ort = Berlin | Jahr = 2010 | ISBN = 978-3-642-01734-6 | Seiten = 277}}&lt;/ref&gt;
     * {{Literatur | Autor=Michael J. Padilla, Ioannis Miaoulis, Martha Cyr | Jahr = 2002 | Titel = Prentice Hall Science Explorer: Chemical Building Blocks | Verlag = Prentice-Hall, Inc. | Ort = Upper Saddle River, New Jersey USA | ISBN = 0-13-054091-9 | |Originalsprache=en}}
+    * ISBN 0 902 198 84 X
+    * ISBN 1-57488-530-8
+    * {{ISBN|978-83-7435-239-0​}}
     """
 
 
@@ -39,6 +42,9 @@ EXPECTED = [
     Identifier('isbn', '3519264242'),
     Identifier('isbn', '9783642017346'),
     Identifier('isbn', '0130540919'),
+    Identifier('isbn', '090219884X'),
+    Identifier('isbn', '1574885308'),
+    Identifier('isbn', '9788374352390'),
 ]
 
 def test_extract():
