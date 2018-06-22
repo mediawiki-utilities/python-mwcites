@@ -2,3 +2,4 @@ docopt
 more-itertools
 mwparserfromhell
 mwxml
+mysqltsv
